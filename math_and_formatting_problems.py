@@ -2,7 +2,7 @@
 
 #FORMATTING
 
-#PROBLEM 1 (2pts)
+# PROBLEM 1 (2pts)
 #Use {}.format() to print 0.000321192 in scientific notation to two decimals
 
 
@@ -13,8 +13,8 @@
 
 
 
-#PROBLEM 3 (3pts)
-#Take the following program:
+# PROBLEM 3 (3pts)
+# Take the following program:
 
 score = 41237
 highscore = 1023407

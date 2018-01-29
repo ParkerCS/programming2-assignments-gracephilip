@@ -4,13 +4,13 @@
 
 # PROBLEM 1 (2pts)
 #Use {}.format() to print 0.000321192 in scientific notation to two decimals
-
+print("{:.2e}".format(0.000321192))
 
 
 #PROBLEM 2 (2pts)
 #You get 8 out of 9 on a quiz.
 #Print 8/9 using {}.format() so that it appears as 88.9%
-
+print("{:.1%}".format(8/9))
 
 
 # PROBLEM 3 (3pts)
@@ -18,8 +18,9 @@
 
 score = 41237
 highscore = 1023407
-print("Score:      " + str(score) )
-print("High score: " + str(highscore) )
+
+print("Score:      {:,}".format(score))
+print("High score: {:,}".format(highscore))
 
 #Which right now outputs:
 #Score:      41237
@@ -58,10 +59,8 @@ print("High score: " + str(highscore) )
 #1/20 = 0.05
 
 
-for i in range(1, 20):
-  print(i) # in case you forgot how to use a loop, here's a start
-
-
+for i in range(1, 21):
+    print("{:.3}".format(1 / i)) # in case you forgot how to use a loop, here's a start
 
 
 #PROBLEM 5 (From Math Class to Code - 5pts)
@@ -69,18 +68,23 @@ for i in range(1, 20):
 # 3(60x^2 + 3x/9) + 2x - 4/3(x) - sqrt(x)
 # where x = 12.83
 
-
 x = 12.83
-your_answer = 0  # Substitute your equation for the zero
-print(your_answer)
-
+your_answer = 3 * ((60 * x ** 2) + ((3 * x) / 9))  + ((2 * x) - (4 / 3) * x ) - (x ** (1 / 2))
+print("{:.2f}".format(your_answer))
 
 #PROBLEM 2 (Wholesale Books - 5pts)
 #The cover price of a book is $27.95, but bookstores get a 50 percent discount.
 #Shipping costs $4 for the first copy and 75 cents for each additional copy.
 # Calculate the total wholesale costs for 68 copies formatted (using {}.format()) to the nearest penny.
 
+price = 27.95
+shipping = 4.0
+additional_copy = 0.75
+discount = 0.50
 
+total_price = (price + (67 * additional_copy)) / discount + shipping
+
+print("${:.2f}".format(total_price))
 
 
 #PROBLEM 3 (What is this, the ACT? - 5pts)
@@ -92,8 +96,9 @@ print(your_answer)
 chair_price = 189.99
 tax_percent = 0.095
 units = 8
-
-
+total = (chair_price * units) * tax_percent
+pricewithtax = total + (chair_price * units)
+print("${:.2f}".format(pricewithtax))
 
 
 ##PROBLEM 4 (Variable Swap Logic Problem- 2pts)
@@ -108,10 +113,12 @@ a = 17
 b = 23
 print( "a =", a, "and b =", b)
 a += b # this is the first line to help you out
+b += a
+
 # add two more lines of code here to cause swapping of a and b
 print( "a =", a, "and b =", b)
 
-
+# print("a = {1} and b= {0}.".format(a, b))
 
 
 #####PROBLEM 5 (Coin counter - 5pts)
@@ -123,4 +130,20 @@ print( "a =", a, "and b =", b)
 # then the maximum number of dimes that fit in the remainder after you subtract the dollars and quarters,
 # and so on for nickels and pennies.
 # The result is that you express the amount as the minimum number of coins needed.
+
+money_amount = 1.68 # 1 dollar, 2 quarters, 1 dime, 1 nickel, 3 pennies
+dollars = 1.0
+quarters = 0.25
+dimes = 0.10
+nickels = 0.05
+pennies = 0.01
+
+#for i in range(money_amount, 0, dollars):
+    #print(i)
+
+
+#print(money_amount // dollars)
+
+# use floor function and mod
+# first multiply by 100 to gt rid of decimals
 

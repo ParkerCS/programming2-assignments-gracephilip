@@ -6,6 +6,12 @@
 # I.e., the sequence starts with 1, 1, 2, 3, 5, 8, 13, 21,...
 # Write a program that calculates and prints the Fibonacci sequence
 # until the numbers get higher than 1000.
+a = 1
+b = 1
+print(a)
+print(b)
+print(a + b)
+
 
 # PROBLEM 2 (Dice Sequence - 6pts)
 # You roll five six-sided dice, one by one.
@@ -21,3 +27,4 @@
 # What are the digits?
 # Note: to make ABCD and DCBA conventional numbers, neither A nor D can be zero.
 # Use a quadruple-nested loop to solve. 
+

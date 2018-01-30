@@ -113,8 +113,8 @@ a = 17
 b = 23
 print( "a =", a, "and b =", b)
 a += b # this is the first line to help you out
-b += a
-
+b = a - b
+a -= b
 # add two more lines of code here to cause swapping of a and b
 print( "a =", a, "and b =", b)
 
@@ -132,18 +132,20 @@ print( "a =", a, "and b =", b)
 # The result is that you express the amount as the minimum number of coins needed.
 
 money_amount = 1.68 # 1 dollar, 2 quarters, 1 dime, 1 nickel, 3 pennies
-dollars = 1.0
-quarters = 0.25
-dimes = 0.10
-nickels = 0.05
-pennies = 0.01
+dollars = 0
+quarters = 0
+dimes = 0
+nickels = 0
+pennies = 0
 
-#for i in range(money_amount, 0, dollars):
-    #print(i)
+dollars = money_amount // 1
+quarters = (money_amount - dollars) // 0.25
+dimes = (money_amount - dollars - (quarters * 0.25)) // 0.10
+nickels = (money_amount - dollars - (quarters * 0.25) - (dimes * 0.10)) // 0.05
+pennies = ((money_amount - dollars - (quarters * 0.25) - (dimes * 0.10) - (nickels * 0.05)) // 0.01) + 1
 
-
-#print(money_amount // dollars)
-
-# use floor function and mod
-# first multiply by 100 to gt rid of decimals
-
+print("Dollars: {:.0f}".format(dollars))
+print("Quarters: {:.0f}".format(quarters))
+print("Dimes: {:.0f}".format(dimes))
+print("Nickels: {:.0f}".format(nickels))
+print("Pennies: {:.0f}".format(pennies))

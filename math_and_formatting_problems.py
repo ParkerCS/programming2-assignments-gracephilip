@@ -10,7 +10,7 @@ print("{:.2e}".format(0.000321192))
 #PROBLEM 2 (2pts)
 #You get 8 out of 9 on a quiz.
 #Print 8/9 using {}.format() so that it appears as 88.9%
-print("{:.1%}".format(8/9))
+print("{:.1%}".format(8 / 9))
 
 
 # PROBLEM 3 (3pts)
@@ -19,7 +19,7 @@ print("{:.1%}".format(8/9))
 score = 41237
 highscore = 1023407
 
-print("Score:      {:,}".format(score))
+print("Score:{:>12,}".format(score))
 print("High score: {:,}".format(highscore))
 
 #Which right now outputs:

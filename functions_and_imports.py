@@ -1,3 +1,4 @@
+import import_me
 #FUNCTIONS AND IMPORTS (20PTS TOTAL)
 # Be sure to comment all your functions as shown in notes
 
@@ -48,14 +49,18 @@ my_function3 (45, 90)
 # PROBLEM 5 (Login - 4pts)
 # Make a file called import_me.py in this same project
 # Inside this new module/file, make a login function which works according to the flow diagram PasswordFlowchart.png in this folder
-# Substitute your name for Rohan's, and use whatever generic password you want.
-
-
-
-
+# Substitute your name for Rowan's, and use whatever generic password you want.
 
 
 # PROBLEM 6 (main - 4pts)
 # import the file import_me from Problem 5
 # Create a main program using the format if __name__ == "__main__": 
 # Place every call from problems 1 through 5 into this program.
+
+
+if __name__ == "__main__":
+    import_me.my_function4(name = "Grace")
+
+    # this is the file that you executed/ran
+
+

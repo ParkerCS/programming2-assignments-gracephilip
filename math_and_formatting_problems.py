@@ -60,7 +60,7 @@ print("High score: {:,}".format(highscore))
 
 
 for i in range(1, 21):
-    print("{:.3}".format(1 / i)) # in case you forgot how to use a loop, here's a start
+    print("1/{:<2} = {:<.3}".format(i, 1 / i)) # in case you forgot how to use a loop, here's a start
 
 
 #PROBLEM 5 (From Math Class to Code - 5pts)
@@ -69,7 +69,7 @@ for i in range(1, 21):
 # where x = 12.83
 
 x = 12.83
-your_answer = 3 * ((60 * x ** 2) + ((3 * x) / 9))  + ((2 * x) - (4 / 3) * x ) - (x ** (1 / 2))
+your_answer = 3 * ((60 * x ** 2) + ((3 * x) / 9)) + ((2 * x) - (4 / 3) * x ) - (x ** (1 / 2))
 print("{:.2f}".format(your_answer))
 
 #PROBLEM 2 (Wholesale Books - 5pts)
@@ -99,6 +99,7 @@ units = 8
 total = (chair_price * units) * tax_percent
 pricewithtax = total + (chair_price * units)
 print("${:.2f}".format(pricewithtax))
+
 
 
 ##PROBLEM 4 (Variable Swap Logic Problem- 2pts)

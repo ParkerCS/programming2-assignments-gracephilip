@@ -1,29 +1,65 @@
+import random
 #LISTS (31PTS TOTAL)
 #In these exercises you should should use functions as needed.  All functions should have comments to describe their purpose.
 
 # PROBLEM 1 (Using List Comprehensions - 6pts)
 # Use the list comprehension method to do the following:
+
 # a) Make a list of numbers from 1 to 100
+my_list = [x for x in range(1, 101)]
+print(my_list)
+
 # b) Make a list of even numbers from 20 to 40
+even_list = [x for x in range(20, 41) if x % 2 == 0]
+print(even_list)
+
 # c) Make a list of squares from 1 to 100 (1 ** 2 to 100 ** 2)
+
+square_list = [x ** 2 for x in range(1, 101)]
+print(square_list)
+
+# them all together
+
+my_list = [x ** 2 for x in range(100) if x ** 2 % 2 == 0 and x >= 20 and x <= 40]
+print(my_list)
+
+
+
 
 #PROBLEM 2 (8-ball - 5pts)
 # A magic 8-ball, when asked a question, provides a random answer from a list.
 # The code below contains a list of possible answers. Create a magic 8-ball program that
 # prints a random answer.
-answer_list = [ "It is certain", "It is decidedly so", "Without a \
+answer_list = ["It is certain", "It is decidedly so", "Without a \
 doubt", "Yes, definitely", "You may rely on it", "As I see it, \
 yes", "Most likely", "Outlook good", "Yes", "Signs point to yes",
-"Reply hazy try again", "Ask again later", "Better not tell you \
-now", "Cannot predict now", "Concentrate and ask again", "Don ' t \
+"Reply hazy, try again", "Ask again later", "Better not tell you \
+now", "Cannot predict now", "Concentrate and ask again", "Don't \
 count on it", "My reply is no", "My sources say no", "Outlook \
-not so good", "Very doubtful" ]
+not so good", "Very doubtful"]
+
+print(answer_list[random.randrange(len(answer_list))])
 
 
 # PROBLEM 3 (Shuffle - 5pts)
 # A playing card consists of a suit (Heart, Diamond, Club, Spade) and a value (2,3,4,5,6,7,8,9,10,J,Q,K,A).
 # Create a list of all possible playing cards, which is a deck.
-# Then create a function that shuffles the deck, producing a random order.
+# Then create a function that shuffles the deck, producing a random order. (USE POP)
+
+
+values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
+suits = ["H", "S", "C", "D"]
+shuffled_deck = []
+deck = []
+for val in values:
+    for suit in suits:
+        deck.append(val + suit)
+print(deck)
+
+while len(deck) > 0:
+    shuffled_deck.append(deck.pop(random.randrange(len(deck))))
+    print(deck)
+print(shuffled_deck)
 
 
 # PROBLEM 4 (Tic-Tac-Toe - 15pts)
@@ -49,8 +85,8 @@ not so good", "Very doubtful" ]
 # while True:
 #   ask for row
 #   ask for column
-#       if row/column already occupied:
-#           display error
+#   if row/column already occupied:
+#       display error
 #   place player marker in row/col
 #   display board
 #   check for winner:
@@ -60,6 +96,87 @@ not so good", "Very doubtful" ]
 #       announce draw
 #       break
 #   switch player
+def draw_board(board):
+    '''
+
+    :param board:
+    :return:
+    '''
+    for row in board:
+        for column in row:
+            print(column, end = " ")
+        print()
+
+
+
+def player_win(board, player):
+    '''
+
+    :param board:
+    :param player:
+    :return:
+    '''
+    if board[0][0] == player and board[0][1] == player and  board[0][2] == player:
+        print(player, "Wins")
+        return True
+    if board[0][0] == player and board[1][1] == player and  board[2][2] == player:
+        print(player, "Wins")
+        return True
+    if board[0][0] == player and board[1][0] == player and  board[2][0] == player:
+        print(player, "Wins")
+        return True
+    if board[2][0] == player and board[2][1] == player and  board[2][2] == player:
+        print(player, "Wins")
+        return True
+    if board[2][0] == player and board[2][1] == player and  board[2][2] == player:
+        print(player, "Wins")
+        return True
+    return False
+
+
+
+
+
+def full_board(board, player):
+    pass
+
+
+
+
+done = False
+
+board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+draw_board(board)
+player = "X"
+
+while not done:
+    row = int(input("Player: " + player + " Pick a row (1,2,3): "))
+    column = int(input("Player: " + player + " Pick a column (1,2,3): "))
+    if board[row - 1][column - 1] == " ":
+        board[row - 1][column - 1] = player
+    else:
+        print("Pick again.")
+        continue
+    draw_board(board)
+    done = player_win(board, player)
+
+
+    if player == "X":
+        player = "O"
+    else:
+        player = "X"
+
+
+
+
+
+
+
+
+
+
+
+
 
 # CHALLENGE PROBLEM 5 (MAY DO AS SUBSTITUTE FOR PROBLEM 4, NO ADDITIONAL CREDIT)
 # Create a program that is a simplified version of the game “Battleship.”

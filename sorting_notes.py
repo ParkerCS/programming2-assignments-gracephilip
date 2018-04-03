@@ -73,3 +73,31 @@ print(time.perf_counter() - start_time)
 my_names = ["Abe", "deb", "Eve", "Rob", "bob", "Zed", "Nan"]
 my_names.sort(reverse=True, key=str.upper)
 print(my_names)
+
+
+
+my_list1 = [3, 5, 1, 8, 5, 3]
+my_list2 = [[8, 2], [5, 1], [6, 3]]
+
+my_list1.sort() # sorts in place
+my_list1 = sorted(my_list1) # equivalent function that RETURNS
+print(my_list1)
+
+my_list2.sort()
+print(my_list2)
+
+# lambda function - anonymous sing line function
+# lambda parameters: what to return
+
+double = lambda x: 2 * x
+print(double(10))
+
+products = lambda x, y: x * y
+print(products(9, 8))
+
+my_list2.sort(key=lambda x: x[1])
+print(my_list2)
+
+my_list3 = ["Bev", "Cam", "Abe", "ava"]
+my_list3.sort(key=lambda x: x.upper())
+print(my_list3)

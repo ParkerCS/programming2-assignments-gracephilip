@@ -1,3 +1,6 @@
+import csv
+import matplotlib.pyplot as plt
+
 '''
 Energy Efficiency of Chicago Schools (35pts)
 
@@ -27,3 +30,38 @@ Challenge (for fun):
 - Add colleges and universities (use a different marker type)
 
 '''
+
+with open("files/Chicago_Energy_Benchmarking_-_2016_Data_Reported_in_2017.csv") as f:
+    reader = csv.reader(f)  # make a reader object
+    data = list(reader)  # casting the reader object as a list
+
+
+headers = data.pop(0)
+
+names = [x[2].strip() for x in data]
+name_index = [x for x in range(len(names))]
+print(name_index)
+
+print(headers[20])
+total_sf = []
+names = []
+total_ghg = []
+total_intensity = []
+
+for i in range(len(data)):
+    try:
+        ghg = float(data[i][20])
+        sf = float(data[i][7])
+        name = data[i][2]
+        intensity = float(data[i][21])
+
+        total_intensity.append(intensity)
+        total_sf.append(sf)
+        total_ghg.append(ghg)
+        names.append(name)
+    except:
+        print("No data for", data[i][2])
+
+
+
+plt.figure(1)

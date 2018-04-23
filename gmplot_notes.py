@@ -1,9 +1,10 @@
 from gmplot import *
 import csv
+import random
 
 apikey = "AIzaSyD65be4pywe7-y4GjMmzZMidOpdmu2lkXo"
 
-mymap = GoogleMapPlotter(41.923079, -87.638230, 14, apikey=apikey)  # lat, long, zoom_level, apikey=var
+mymap = GoogleMapPlotter(41.923079, -87.638230, 10, apikey=apikey)  # lat, long, zoom_level, apikey=var
 
 mymap.marker(41.923079, -87.638230) # lat, long
 
@@ -22,8 +23,19 @@ with open("../files/Parks_-_Public_Art.csv") as f:
     reader = csv.reader(f)
     data = list(reader)
 
-print(data[0])
+print(data.pop(0))
 
+lats = [float(x[-3]) for x in data]
+longs = [float(x[-2]) for x in data]
+size = [random.randrange(1, 500) for x in data]
+
+
+#mymap.scatter(lats, longs, marker=False, color="red", size=10, alpha=0.5)
+
+#for i in range(len(lats)):
+    #mymap.circle(lats[i], longs[i], size[i])
+
+mymap.heatmap(lats, longs, maxIntensity=7, radius=50, dissipating=True)
 
 
 mymap.draw('mymap.html')

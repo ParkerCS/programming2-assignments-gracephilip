@@ -30,6 +30,8 @@ with open("files/Grocery_Stores_-_2013.csv") as f:
 
 print(data.pop(0))
 
+
+
 lats = [float(x[-3]) for x in data]
 longs = [float(x[-2]) for x in data]
 size = [random.randrange(1, 500) for x in data]
@@ -46,10 +48,15 @@ for i in range(len(lats)):
 store_names = ["LIQUOR STORE", "DRY STORE", "GROCERY STORE", "WALGREENS"]
 
 index = 0
-while index < len(store_names):
-    if "LIQUOR" in store_names[index] or "WALGREENS" in store_names[index]:
-        del store_names[index]
+while index < len(data):
+    if "LIQUOR" in data[index][0].upper() or "WALGREENS" in data[index][0].upper():
+        del data[index]
     index += 1
-print(store_names)
+print(data)
+
+for i in range(len(lats)):
+    mymap.circle(lats[i], longs[i], size[i])
+
+mymap.heatmap(lats, longs, maxIntensity=7, radius=30, dissipating=True)
 
 mymap.draw('grocery.html')

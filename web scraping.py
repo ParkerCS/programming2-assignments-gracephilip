@@ -1,3 +1,7 @@
+from bs4 import BeautifulSoup
+import requests
+import random
+
 # PROBLEM 1 (12pts)
 # Go to your favorite follow on Twitter.  (not someone who posts explicit materials please)
 # Inspect the twitter feed in Chrome.
@@ -6,8 +10,15 @@
 # Print the tweets in a nicely formatted way.
 # Have fun.  Again, nothing explicit.
 
+url = "https://twitter.com/_Snape_"
 
+page = requests.get(url)
+#print(page.text)
 
+soup = BeautifulSoup(page.text, "html.parser")
+
+tweets = [x.text.strip() for x in soup.findAll("p", class_="tweet-text")]
+print(tweets)
 
 
 # (20pts)
@@ -22,3 +33,11 @@
 # Wednesday, April 4 will be Partly Cloudy/Windy with a High of 37 degrees and a low of 25, humidity at 52%.  There is 0% chance of rain with winds out of the WNW at 22 mph.
 
 url = "https://weather.com/weather/tenday/l/Chicago+IL+USIL0225:1:US"
+
+page = requests.get(url)
+soup = BeautifulSoup(page.text, "html.parser")
+
+description = [x.text.strip() for x in soup.findAll("td", class_="description")]
+temperature = [x.text.strip() for x in soup.findAll("td", class_="temp")]
+chance_of_rain = [x.text.strip() for x in soup.findAll("td", class_="precip")]
+wind = [x.text.strip() for x in soup.findAll("td", class_="wind")]
